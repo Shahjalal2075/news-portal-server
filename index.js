@@ -102,7 +102,6 @@ async function run() {
             res.send(result);
         })
 
-
         app.get('/news', async (req, res) => {
             const cursor = usersCollectionAllNews.find()
             const result = await cursor.toArray();
@@ -202,6 +201,12 @@ async function run() {
         })
 
         app.post('/worksheets', async (req, res) => {
+            const work = req.body;
+            console.log('new work', work);
+            const result = await usersCollectionWorkSheets.insertOne(work);
+            res.send(result);
+        })
+        app.post('/worksheetss', async (req, res) => {
             const work = req.body;
             console.log('new work', work);
             const result = await usersCollectionWorkSheets.insertOne(work);
